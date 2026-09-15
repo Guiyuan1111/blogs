@@ -21,8 +21,8 @@
 
 | 日期 | 标题 | 简介 |
 | :--- | :--- | :--- |
-| 2026-09-15 | [杀软 TLS 中间人扫描致 Node.js `fetch failed`：`SELF_SIGNED_CERT_IN_CHAIN` 的取证定位与修复](posts/2026-09-15-kaspersky-tls-mitm-nodejs.md) | 同一端点 Node（undici）间歇性证书报错、PowerShell（Schannel）稳定 401；证书链取证定位 Kaspersky 加密扫描与 SAN 不匹配的叶子证书，含双栈信任库差异、修复路线判定树与 10 秒确诊命令 |
-| 2026-09-15 | [精简版 Windows 11 更新链路瘫痪（`0x80073712`，4114 处组件损坏）：诊断与 UUP 就地修复升级](posts/2026-09-15-windows11-lite-rescue.md) | 第三方"轻度精简"镜像出厂锁死更新 + 组件存储损坏 4114 处 + CBS 日志关闭 + WinRE 删除；DISM/SFC/云重置/官方 ISO 全部结构性失效，改用 UUP 拼制镜像就地修复升级到 26H2 (26300.9539)，数据 100% 保留；含四层破坏模型、七手段失败矩阵与可照抄速查 |
+| 2026-09-15 | [Node.js 报 `TypeError: fetch failed`（`SELF_SIGNED_CERT_IN_CHAIN`）：卡巴斯基 TLS 中间人扫描的诊断与修复](posts/2026-09-15-nodejs-fetch-failed-self-signed-cert-in-chain-kaspersky.md) | Node（undici）间歇性证书报错、PowerShell（Schannel）稳定 401；证书链取证定位 Kaspersky 加密连接扫描与 SAN 不匹配的叶子证书，给出 `SELF_SIGNED_CERT_IN_CHAIN` 10 秒确诊命令、双栈信任库差异与 `NODE_EXTRA_CA_CERTS` 为何无效的判定树 |
+| 2026-09-15 | [Windows 11 更新报 `0x80073712`：DISM `/RestoreHealth` 卡死、sfc 无法启动、WinRE 被删时的 UUP 镜像就地修复升级](posts/2026-09-15-windows11-update-0x80073712-0x800f0915-uup-upgrade.md) | 精简镜像锁死更新 + 组件存储损坏 4114 处 + CBS 日志关闭 + WinRE 删除；`0x80073712` / `0x800f0915` 下 DISM、SFC、云重置、官方 ISO 全部结构性失效，改用 UUP 拼制镜像就地升级到 26H2 (26300.9539)，数据 100% 保留；含四层破坏模型、七手段失败矩阵与可照抄速查 |
 
 ---
 

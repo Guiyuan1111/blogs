@@ -1,17 +1,19 @@
 <div align="center">
 
-# 杀软 TLS 中间人扫描致 Node.js `fetch failed`：`SELF_SIGNED_CERT_IN_CHAIN` 的取证定位与修复
+# Node.js 报 `TypeError: fetch failed`（`SELF_SIGNED_CERT_IN_CHAIN`）：卡巴斯基 TLS 中间人扫描的诊断与修复
 
 **故障与根因摘要：Node.js（undici）访问 `api.deepseek.com` 间歇性抛 `TypeError: fetch failed`，cause 为 `SELF_SIGNED_CERT_IN_CHAIN`；同一时刻 PowerShell（Schannel + Windows 证书库）请求同一端点稳定返回 HTTP 401。证书链取证显示 Kaspersky 加密连接扫描的中间人代理呈递的叶子证书 SAN 为 `*.unionpayintl.com`，与目标主机名不匹配，故 `NODE_EXTRA_CA_CERTS` 路线不可用，只能在杀软侧对该域名关闭加密扫描。**
 
 [![故障码](https://img.shields.io/badge/fault-SELF__SIGNED__CERT__IN__CHAIN-red)](#1-故障指纹)
 [![根因](https://img.shields.io/badge/root__cause-Kaspersky%20HTTPS%20interception-orange)](#2-根因分析)
-[![叶子证书](https://img.shields.io/badge/leaf%20SAN-%2A.unionpayintl.com-yellowgreen)](#14-证书链取证)
-[![验证](https://img.shields.io/badge/verify-5%2F5%20passed-brightgreen)](#4-验证)
+[![叶子证书](https://img.shields.io/badge/leaf%20SAN-%2A.unionpayintl.com-yellowgreen)](#23-证书链取证)
+[![验证](https://img.shields.io/badge/verify-5%2F5%20passed-brightgreen)](#5-验证)
 
 </div>
 
 ---
+
+**关键词**：`TypeError: fetch failed` · `SELF_SIGNED_CERT_IN_CHAIN` · `UNABLE_TO_VERIFY_LEAF_SIGNATURE` · `ERR_TLS_CERT_ALTNAME_INVALID` · `NODE_EXTRA_CA_CERTS` · 卡巴斯基 Kaspersky 加密连接扫描 · Node.js / undici 内置 fetch 证书报错 · npm / pnpm / CLI 工具同款症状 · Windows 证书库与 Mozilla CA 信任栈差异
 
 ## 0. 摘要
 
