@@ -1,6 +1,6 @@
 <div align="center">
 
-# Node.js 报 `TypeError: fetch failed`（`SELF_SIGNED_CERT_IN_CHAIN`）：卡巴斯基 TLS 中间人扫描的诊断与修复
+# 【已解决】DeepSeek Harness 的 web_search 报错 `TypeError: fetch failed`（`SELF_SIGNED_CERT_IN_CHAIN` · 卡巴斯基 TLS 中间人扫描）
 
 **故障与根因摘要：Node.js（undici）访问 `api.deepseek.com` 间歇性抛 `TypeError: fetch failed`，cause 为 `SELF_SIGNED_CERT_IN_CHAIN`；同一时刻 PowerShell（Schannel + Windows 证书库）请求同一端点稳定返回 HTTP 401。证书链取证显示 Kaspersky 加密连接扫描的中间人代理呈递的叶子证书 SAN 为 `*.unionpayintl.com`，与目标主机名不匹配，故 `NODE_EXTRA_CA_CERTS` 路线不可用，只能在杀软侧对该域名关闭加密扫描。**
 
