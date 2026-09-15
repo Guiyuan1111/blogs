@@ -21,7 +21,7 @@
 
 | 日期 | 标题 | 简介 |
 | :--- | :--- | :--- |
-| 2026-09-15 | [🛡️ 杀毒软件的"幽灵之手"：卡巴斯基 TLS 中间人劫持 Node 网络请求实录](posts/2026-09-15-kaspersky-tls-mitm-nodejs.md) | AI 智能体联网搜索间歇性 `fetch failed`，五阶段排查锁定卡巴斯基加密扫描注入的"串线证书"（发给 DeepSeek API 的证书竟是银联国际的）；含 Node 信任库断层原理与 10 秒确诊工具箱 |
+| 2026-09-15 | [杀软 TLS 中间人扫描致 Node.js `fetch failed`：`SELF_SIGNED_CERT_IN_CHAIN` 的取证定位与修复](posts/2026-09-15-kaspersky-tls-mitm-nodejs.md) | 同一端点 Node（undici）间歇性证书报错、PowerShell（Schannel）稳定 401；证书链取证定位 Kaspersky 加密扫描与 SAN 不匹配的叶子证书，含双栈信任库差异、修复路线判定树与 10 秒确诊命令 |
 | 2026-09-15 | [🪟 精简版系统的"绝症"治愈实录](posts/2026-09-15-windows11-lite-rescue.md) | 第三方精简版 Windows 更新瘫痪（4114 个组件损坏 + 0x80073712），教科书式修复全军覆没后，用 UUP 定制镜像就地升级完成绝地重生，顺路登上 26H2 |
 
 ---
