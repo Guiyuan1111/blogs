@@ -17,7 +17,13 @@
 
 ## 红线（不可违反）
 
-- 不得把机主隐私写入文章或提交：邮箱、QQ 号、手机号、硬件序列号、账户 SID、`Guiyuan1111` 用户名出现的本机路径
+- **🔴 第一优先：隐私与联系方式保护，高于一切其他规则**。推送到 GitHub 的任何内容不得出现：邮箱、QQ/微信等联系方式、手机号、真实姓名、硬件序列号、账户 SID、含 `Guiyuan1111` 用户名的本机路径、内网 IP。git 提交保持 GitHub noreply 邮箱（`...@users.noreply.github.com`），严禁换成真实邮箱。
+- **推送前必须执行隐私扫描，两条命令零输出才允许 `git push`**：
+  ```bash
+  grep -rinE "@qq\.com|@163\.com|@gmail\.com|@foxmail\.com|1[3-9][0-9]{9}|S-1-5-21|192\.168\.|序列号|serial" .
+  grep -rin "Guiyuan1111" --include="*.md" . | grep -v "github.com/Guiyuan1111" | grep -v "Guiyuan1111/blogs"
+  ```
+  （已知机主 QQ 号等联系方式凭会话记忆排查，严禁把号码本身写进任何文件。）**命中判读**：规则文件自身的规则描述行属于自指豁免；其余任何命中必须先消除再推送。
 - 不得虚构操作结果：所有错误码、计数、时间线必须来自真实执行输出
 - 不得删除或改写已有文章的 AI 生成声明
 - 远程保持 HTTPS（`https://github.com/Guiyuan1111/blogs.git`），不要改回 SSH
